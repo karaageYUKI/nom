@@ -1,0 +1,12 @@
+services:
+  - name: my-web-service
+    type: web
+    region: us-east-1
+    build:
+      docker:
+        dockerfile: Dockerfile
+    deploy:
+      startCommand: npm start
+    envVars:
+      - key: SECRET_KEY
+        value: your_secret_key
