@@ -1,12 +1,11 @@
 services:
-  - name: my-web-service
-    type: web
-    region: us-east-1
-    build:
-      docker:
-        dockerfile: Dockerfile
-    deploy:
-      startCommand: npm start
+  - type: web
+    name: 10503020-google
+    env: python
+    region: Oregon
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn --port $PORT --host 0.0.0.0 main:app"
     envVars:
-      - key: SECRET_KEY
-        value: your_secret_key
+    - key: PYTHON_VERSION
+      value: 3.10.9
